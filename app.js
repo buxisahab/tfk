@@ -85,3 +85,29 @@ function showFeed() {
     articleView.classList.add('hidden');
     feedView.classList.remove('hidden');
 }
+
+// Navigation Auth State
+const navLogin = document.getElementById('nav-login');
+const navWrite = document.getElementById('nav-write');
+const navLogout = document.getElementById('nav-logout');
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        if(navLogin) navLogin.classList.add('hidden');
+        if(navWrite) navWrite.classList.remove('hidden');
+        if(navLogout) navLogout.classList.remove('hidden');
+    } else {
+        if(navLogin) navLogin.classList.remove('hidden');
+        if(navWrite) navWrite.classList.add('hidden');
+        if(navLogout) navLogout.classList.add('hidden');
+    }
+});
+
+async function logout() {
+    try {
+        await auth.signOut();
+        window.location.reload();
+    } catch(error) {
+        console.error('Logout error:', error);
+    }
+}
