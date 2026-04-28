@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Serverless Publishing</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Quill CSS for rendered article styling -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Nexus.</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div id="loader" class="loader"></div>
+        
+        <!-- Feed View -->
+        <div id="feed-view" class="hidden">
+            <!-- Articles will be injected here -->
+        </div>
+
+        <!-- Single Article View -->
+        <div id="article-view" class="hidden">
+            <button class="btn" style="margin-bottom: 2rem;" onclick="showFeed()">← Back to Feed</button>
+            <article>
+                <div class="article-header">
+                    <h1 id="view-title" class="article-title"></h1>
+                    <div class="article-meta" style="justify-content: center;">
+                        <span id="view-author"></span> <span style="margin: 0 0.5rem">•</span> <span id="view-date"></span>
+                    </div>
+                </div>
+                <div id="view-content" class="article-content ql-editor"></div>
+            </article>
+        </div>
+    </main>
+
+    <script src="firebase-init.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
